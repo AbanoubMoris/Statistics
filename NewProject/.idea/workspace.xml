@@ -47,12 +47,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1696" />
+          <entry key="py" value="2087" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1696" />
+          <entry key="Python" value="2087" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,13 +81,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            <state relative-caret-position="346">
+              <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#672#823#0" />
-                <marker date="1556234747957" expanded="true" signature="714:871" ph="..." />
-                <marker date="1556234747957" expanded="true" signature="886:994" ph="..." />
+                <marker date="1556237936108" expanded="true" signature="1427:1448" ph="..." />
+                <marker date="1556237936108" expanded="true" signature="1463:1571" ph="..." />
+                <marker date="1556237936108" expanded="true" signature="1584:1628" ph="..." />
               </folding>
             </state>
           </provider>
@@ -249,6 +249,17 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Statistics.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -272,13 +283,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        <state relative-caret-position="346">
+          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#672#823#0" />
-            <marker date="1556234747957" expanded="true" signature="714:871" ph="..." />
-            <marker date="1556234747957" expanded="true" signature="886:994" ph="..." />
+            <marker date="1556237936108" expanded="true" signature="1427:1448" ph="..." />
+            <marker date="1556237936108" expanded="true" signature="1463:1571" ph="..." />
+            <marker date="1556237936108" expanded="true" signature="1584:1628" ph="..." />
           </folding>
         </state>
       </provider>
