@@ -1,5 +1,7 @@
+from lib2to3.pgen2.tokenize import Double
 from os import truncate
 from tkinter import *
+import tkinter.messagebox
 import statistics
 import InitializeComponent as ic
 from collections import Counter
@@ -9,6 +11,7 @@ from prettytable import PrettyTable
 from tabulate import tabulate
 import csv
 from collections import defaultdict
+import math
 
 def ReadData():
     columns = defaultdict(list)
@@ -44,6 +47,14 @@ Label(window, text="Sample     " , font = font).grid(column=0, row=2)
 sampleTxt = Entry(window, width=60 , font = font)
 sampleTxt.grid(column=1, row=2)
 
+Label(window, text="Correlation     " , font = font).grid(column=0, row=4)
+Label(window, text="X     " , font = font).grid(column=0, row=5)
+X_Txt = Entry(window, width=60 , font = font)
+X_Txt.grid(column=1, row=5)
+
+Label(window, text="Y     " , font = font).grid(column=0, row=6)
+Y_Txt = Entry(window, width=60 , font = font)
+Y_Txt.grid(column=1, row=6)
 
 
 def Sample():
@@ -128,6 +139,64 @@ def showTable():
     Label(window, text=t, font=font).grid(column=1, row=5)
 
 
+def X_Values():
+ listX = []
+ if str(X_Txt.get()) == '':
+    map = dict(Counter(len(listX)))
+    for val in map.values():
+        listX.append(int(val))
+ else:
+  res = list(str(X_Txt.get()).split(','))
+  for a in res:
+    listX.append(int(a))
+ return listX
+
+def Y_Values():
+ listY = []
+ if str(Y_Txt.get()) == '':
+    map = dict(Counter(len(listY)))
+    for val in map.values():
+        listY.append(int(val))
+ else:
+  res = list(str(Y_Txt.get()).split(','))
+  for a in res:
+    listY.append(int(a))
+ return listY
+
+def Show_R():
+    x = []
+    y = []
+    x = X_Values()
+    y = Y_Values()
+    N=len(x)
+    sumX = 0
+    sumY = 0
+    sumXY = 0
+    sumXsqr = 0
+    sumYsqr = 0
+    for i in range(0,len(x)):
+        sumX += x[i]
+        sumY += y[i]
+        sumXY += x[i]*y[i]
+        sumXsqr += x[i]*x[i]
+        sumYsqr += y[i]*y[i]
+
+    sumxALLsqr = sumX*sumX
+    sumYALLsqr = sumY*sumY
+
+    #print(sumX)
+    #print(sumY)
+    #print(sumXY)
+    #print(sumXsqr)
+    #print(sumYsqr)
+    #print(sumxALLsqr)
+    #print(sumYALLsqr)
+
+    R = (N *(sumXY)-(sumX*sumY)) / math.sqrt((N*(sumXsqr-sumxALLsqr)*(N*(sumYsqr-sumYALLsqr))))
+    return R
+
+#12,8,5,3,2,0
+#1,7,4,6,4,2
 #note: Historgram , Boxplot uses Sample only
 
 frama = Frame(window , bg = 'red')
@@ -136,7 +205,8 @@ b2 =Button(frama, text="Show BarChart   ", command=barChart, font = font)
 b3 = Button(frama, text="Show Histogram  ", command=histo, font = font)
 b4 = Button(frama, text="Show ScatterPlot", command=scatterPlot, font = font)
 b5 =Button(frama, text="Show BoxPlot    ", command=boxPlot, font = font)
-b6 = Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=4)
+b6 = Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=3)
+b7 = Button(window, text="Show 'R'      ", command=Show_R, font=font).grid(column=1, row=7)
 frama.grid(row=0,column = 2,rowspan=3)
 
 b1.grid(column=0, row=0)
