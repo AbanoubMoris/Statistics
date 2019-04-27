@@ -11,3 +11,6 @@ def form(frm):
 
     frm.title("statistics")
     frm.geometry('%dx%d+%d+%d' % (fw,fh,x,y))
+def frame(form,r,c,spanC=1,spanR=1):
+    fram = Frame(form).grid(row=r,column = c,columnspan=spanC,rowspan=spanR)
+    return  fram

@@ -7,6 +7,24 @@ import matplotlib.mlab as mlab
 import matplotlib.pyplot as plot
 from prettytable import PrettyTable
 from tabulate import tabulate
+import csv
+from collections import defaultdict
+
+def ReadData():
+    columns = defaultdict(list)
+
+    with open('12.csv') as f:
+        reader = csv.DictReader(f) # read rows into a dictionary format
+        for row in reader:
+            for (k,v) in row.items():
+                try:
+                    columns[k].append(int(v))
+                except:
+                    pass
+    return columns
+
+plot.pie(ReadData()['Sample'])
+plot.show()
 
 font = ('tahoma',15)
 window = Tk()
@@ -30,6 +48,8 @@ sampleTxt.grid(column=1, row=2)
 
 def Sample():
     res = list(str(sampleTxt.get()).split(','))
+    if res == '':
+        res =ReadData()['Sample']
     sample = []
     for a in res:
         sample.append(int(a))
@@ -58,34 +78,22 @@ def Labels():
         labels = list(str(vartxt.get()).split(','))
     return  labels
 
-
-
-
-
-
 def pieChart():
     plot.pie(frequency(), autopct='%1.1f%%', shadow=True, startangle=140, labels=Labels())
     plot.show()
-
 
 def barChart():
     plot.bar(Labels(),frequency())
     plot.show()
 
-
 def histo():
 
     res = list(str(sampleTxt.get()).split(','))
     sample = []
-
     for a in res:
         sample.append(int(a))
-
     plot.hist(sample)
-
     plot.show()
-
-
 
 def scatterPlot():
 
@@ -94,11 +102,8 @@ def scatterPlot():
 
 
 def boxPlot():
-
-
     res = list(str(sampleTxt.get()).split(','))
     sample = []
-
     for a in res:
         sample.append(int(a))
     plot.boxplot(sample)
@@ -125,16 +130,20 @@ def showTable():
 
 #note: Historgram , Boxplot uses Sample only
 
-Button(window, text="Show PieChart   ", command=pieChart, font = font).grid(column=2, row=0)
+frama = Frame(window , bg = 'red')
+b1= Button(frama, text="Show PieChart   ", command=pieChart, font = font)
+b2 =Button(frama, text="Show BarChart   ", command=barChart, font = font)
+b3 = Button(frama, text="Show Histogram  ", command=histo, font = font)
+b4 = Button(frama, text="Show ScatterPlot", command=scatterPlot, font = font)
+b5 =Button(frama, text="Show BoxPlot    ", command=boxPlot, font = font)
+b6 = Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=4)
+frama.grid(row=0,column = 2,rowspan=3)
 
-Button(window, text="Show BarChart   ", command=barChart, font = font).grid(column=2, row=1)
-
-Button(window, text="Show Histogram  ", command=histo, font = font).grid(column=2, row=2)
-
-Button(window, text="Show ScatterPlot", command=scatterPlot, font = font).grid(column=2, row=3)
-
-Button(window, text="Show BoxPlot    ", command=boxPlot, font = font).grid(column=2, row=4)
-
-Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=4)
+b1.grid(column=0, row=0)
+b2.grid(column=0, row=1)
+b3.grid(column=0, row=2)
+b4.grid(column=0, row=3)
+b5.grid(column=0, row=4)
+#b6.grid(column=0, row=5)
 
 window.mainloop()
