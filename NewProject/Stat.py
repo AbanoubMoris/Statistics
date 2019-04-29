@@ -41,26 +41,25 @@ window.title("statistics")
 window.geometry('1000x500')
 ic.form(window)
 
-Label(window, text="Variables  " , font = font).grid(column=0, row=0)
-vartxt = Entry(window, width=60 , font = font)
+Label(window, text="Variables  ", font=font).grid(column=0, row=0)
+vartxt = Entry(window, width=60, font=font)
 vartxt.grid(column=1, row=0)
 
-Label(window, text="Frequency  " , font = font).grid(column=0, row=1)
-freqTxt = Entry(window, width=60 , font = font)
+Label(window, text="Frequency  ", font=font).grid(column=0, row=1)
+freqTxt = Entry(window, width=60, font=font)
 freqTxt.grid(column=1, row=1)
 
-Label(window, text="Sample     " , font = font).grid(column=0, row=2)
-sampleTxt = Entry(window, width=60 , font = font)
+Label(window, text="Sample     ", font=font).grid(column=0, row=2)
+sampleTxt = Entry(window, width=60, font=font)
 sampleTxt.grid(column=1, row=2)
 
-Label(window, text="Correlation :    " , font = font).grid(column=0, row=4)
-Label(window, text="X     " , font = font).grid(column=0, row=5)
-X_Txt = Entry(window, width=60 , font = font)
-X_Txt.grid(column=1, row=5)
+Label(window, text="X     ", font=font).grid(column=0, row=4)
+X_Txt = Entry(window, width=60, font=font)
+X_Txt.grid(column=1, row=4)
 
-Label(window, text="Y     " , font = font).grid(column=0, row=6)
-Y_Txt = Entry(window, width=60 , font = font)
-Y_Txt.grid(column=1, row=6)
+Label(window, text="Y     ", font=font).grid(column=0, row=5)
+Y_Txt = Entry(window, width=60, font=font)
+Y_Txt.grid(column=1, row=5)
 
 
 def Sample():
@@ -235,13 +234,13 @@ def linear_reg():
 
 #note: Historgram , Boxplot uses Sample only
 
-frama = Frame(window , bg = 'red')
-b1= Button(frama, text="Show PieChart   ", command=pieChart, font=font)
-b2 =Button(frama, text="Show BarChart   ", command=barChart, font=font)
-b3 = Button(frama, text="Show Histogram  ", command=histo, font=font)
-b4 = Button(frama, text="Show ScatterPlot", command=scatterPlot, font=font)
-b5 =Button(frama, text="Show BoxPlot    ", command=boxPlot, font=font)
-frama.grid(row=0, column =2, rowspan=3)
+frama = Frame(window , bg = 'gray')
+b1 = Button(frama, text="Show PieChart       ", command=pieChart, font=font)
+b2 = Button(frama, text="Show BarChart      ", command=barChart, font=font)
+b3 = Button(frama, text="Show Histogram    ", command=histo, font=font)
+b4 = Button(frama, text="Show ScatterPlot   ", command=scatterPlot, font=font)
+b5 = Button(frama, text="Show BoxPlot        ", command=boxPlot, font=font)
+frama.grid(row=0, column=2, rowspan=3)
 
 b1.grid(column=0, row=0)
 b2.grid(column=0, row=1)
@@ -250,15 +249,15 @@ b4.grid(column=0, row=3)
 b5.grid(column=0, row=4)
 #b6.grid(column=0, row=5)
 
-b6 = Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=3)
+b6 = Button(window, text="Show Table      ", command=showTable, font=font).grid(column=1, row=3)
 Corr_lbl = Label(window, textvariable=corr, font=font)
 Com_lbl = Label(window, textvariable=comment, font=font)
-Corr_lbl.grid(column=2, row=5)
-Com_lbl.grid(column=2,row=6)
+Corr_lbl.grid(column=2, row=6)
+Com_lbl.grid(column=2,row=7)
 
-f = Frame(window,bg='gray')
-b7 = Button(f, text="Show 'R'      ", command=Show_R, font=font)
-b8 = Button(f, text="linear Regretion    ", command=linear_reg, font=font)
+f = Frame(window, bg='gray')
+b7 = Button(f, text="Correlation      ", command=Show_R, font=font)
+b8 = Button(f, text="linear Regression    ", command=linear_reg, font=font)
 f.grid(row=7, column=1)
 
 b7.grid(column=0, row=0)

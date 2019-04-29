@@ -95,27 +95,27 @@
     <session id="-1487324800">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="13" />
+          <entry key="py" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="13" />
+          <entry key="Python" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2252" />
+          <entry key="py" value="2302" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2252" />
+          <entry key="Python" value="2302" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.opened" value="2" />
@@ -128,26 +128,25 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Stat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+            <state relative-caret-position="344">
+              <caret line="246" column="24" lean-forward="true" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#494#824#0" />
-                <element signature="e#1801#1978#0" />
-                <element signature="e#2000#2277#0" />
-                <element signature="e#2297#2560#0" />
-                <element signature="e#2582#2684#0" />
-                <element signature="e#2706#2752#0" />
-                <element signature="e#2772#2917#0" />
-                <element signature="e#2943#2993#0" />
-                <element signature="e#3015#3163#0" />
-                <element signature="e#3186#3674#0" />
-                <element signature="e#3694#3932#0" />
-                <element signature="e#3951#4189#0" />
-                <element signature="e#4217#4439#0" />
-                <element signature="e#4551#5014#0" />
-                <element signature="e#5019#5347#0" />
-                <marker date="1556542699148" expanded="true" signature="4968:4969" ph="..." />
+                <element signature="e#1763#1940#0" />
+                <element signature="e#1962#2239#0" />
+                <element signature="e#2259#2522#0" />
+                <element signature="e#2544#2644#0" />
+                <element signature="e#2666#2710#0" />
+                <element signature="e#2730#2873#0" />
+                <element signature="e#2899#2947#0" />
+                <element signature="e#2969#3115#0" />
+                <element signature="e#3138#3626#0" />
+                <element signature="e#3646#3884#0" />
+                <element signature="e#3903#4141#0" />
+                <element signature="e#4169#4391#0" />
+                <element signature="e#4503#4966#0" />
+                <element signature="e#5019#5323#0" />
               </folding>
             </state>
           </provider>
@@ -327,14 +326,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12623926" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13417052" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" visible="true" weight="0.30736545" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.18271954" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.10481586" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -389,32 +387,31 @@
     <entry file="file://C:/Program Files/Python37/Lib/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="1701" selection-start-line="1701" selection-end-line="1701" />
+          <caret line="2222" selection-start-line="2222" selection-end-line="2222" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
+        <state relative-caret-position="344">
+          <caret line="246" column="24" lean-forward="true" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <element signature="e#494#824#0" />
-            <element signature="e#1801#1978#0" />
-            <element signature="e#2000#2277#0" />
-            <element signature="e#2297#2560#0" />
-            <element signature="e#2582#2684#0" />
-            <element signature="e#2706#2752#0" />
-            <element signature="e#2772#2917#0" />
-            <element signature="e#2943#2993#0" />
-            <element signature="e#3015#3163#0" />
-            <element signature="e#3186#3674#0" />
-            <element signature="e#3694#3932#0" />
-            <element signature="e#3951#4189#0" />
-            <element signature="e#4217#4439#0" />
-            <element signature="e#4551#5014#0" />
-            <element signature="e#5019#5347#0" />
-            <marker date="1556542699148" expanded="true" signature="4968:4969" ph="..." />
+            <element signature="e#1763#1940#0" />
+            <element signature="e#1962#2239#0" />
+            <element signature="e#2259#2522#0" />
+            <element signature="e#2544#2644#0" />
+            <element signature="e#2666#2710#0" />
+            <element signature="e#2730#2873#0" />
+            <element signature="e#2899#2947#0" />
+            <element signature="e#2969#3115#0" />
+            <element signature="e#3138#3626#0" />
+            <element signature="e#3646#3884#0" />
+            <element signature="e#3903#4141#0" />
+            <element signature="e#4169#4391#0" />
+            <element signature="e#4503#4966#0" />
+            <element signature="e#5019#5323#0" />
           </folding>
         </state>
       </provider>
