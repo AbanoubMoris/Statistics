@@ -1,3 +1,5 @@
+import inline
+import matplotlib
 from lib2to3.pgen2.tokenize import Double
 from os import truncate
 from tkinter import *
@@ -12,6 +14,11 @@ from tabulate import tabulate
 import csv
 from collections import defaultdict
 import math
+from numpy import *
+from scipy.interpolate import *
+
+
+
 
 def ReadData():
     columns = defaultdict(list)
@@ -47,7 +54,7 @@ Label(window, text="Sample     " , font = font).grid(column=0, row=2)
 sampleTxt = Entry(window, width=60 , font = font)
 sampleTxt.grid(column=1, row=2)
 
-Label(window, text="Correlation     " , font = font).grid(column=0, row=4)
+Label(window, text="Correlation :    " , font = font).grid(column=0, row=4)
 Label(window, text="X     " , font = font).grid(column=0, row=5)
 X_Txt = Entry(window, width=60 , font = font)
 X_Txt.grid(column=1, row=5)
@@ -136,7 +143,11 @@ def showTable():
     t.add_column('Class',Class)
     t.add_column('Freq',Freq)
     t.add_column('Percent',percent)
-    Label(window, text=t, font=font).grid(column=1, row=5)
+    win = Tk()
+    win.title("Table")
+    win.geometry('500x500')
+    ic.form(win)
+    Label(win, text=t, font=font).grid(column=0, row=0)
 
 
 def X_Values():
@@ -163,9 +174,28 @@ def Y_Values():
     listY.append(int(a))
  return listY
 
+
+def corr_comment(r):
+    if(r >=0.9 or r < -0.9):
+        comment.set("Perfrct")
+    elif(r >= 0.7 and r <= 0.9):
+         comment.set("Strong")
+    elif (r >= 0.4 and r <= 0.6):
+        comment.set("Modrate")
+    else:
+        comment.set("Weak")
+
+
+corr = StringVar()
+Corr_lbl = Label
+comment = StringVar()
+Com_lbl = Label
+
+x = []
+y = []
+
 def Show_R():
-    x = []
-    y = []
+
     x = X_Values()
     y = Y_Values()
     N=len(x)
@@ -184,30 +214,30 @@ def Show_R():
     sumxALLsqr = sumX*sumX
     sumYALLsqr = sumY*sumY
 
-    #print(sumX)
-    #print(sumY)
-    #print(sumXY)
-    #print(sumXsqr)
-    #print(sumYsqr)
-    #print(sumxALLsqr)
-    #print(sumYALLsqr)
-
     R = (N *(sumXY)-(sumX*sumY)) / math.sqrt((N*(sumXsqr-sumxALLsqr)*(N*(sumYsqr-sumYALLsqr))))
-    return R
+    corr.set(R)
+    corr_comment(R)
+
 
 #12,8,5,3,2,0
 #1,7,4,6,4,2
+
+def linear_reg():
+    x = X_Values()
+    y = Y_Values()
+    b1 = polyfit(x, y, 1)
+    plot(x, y, 'o')
+    plot(x, polyval(b1, x), 'r-')
+
 #note: Historgram , Boxplot uses Sample only
 
 frama = Frame(window , bg = 'red')
-b1= Button(frama, text="Show PieChart   ", command=pieChart, font = font)
-b2 =Button(frama, text="Show BarChart   ", command=barChart, font = font)
-b3 = Button(frama, text="Show Histogram  ", command=histo, font = font)
-b4 = Button(frama, text="Show ScatterPlot", command=scatterPlot, font = font)
-b5 =Button(frama, text="Show BoxPlot    ", command=boxPlot, font = font)
-b6 = Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=3)
-b7 = Button(window, text="Show 'R'      ", command=Show_R, font=font).grid(column=1, row=7)
-frama.grid(row=0,column = 2,rowspan=3)
+b1= Button(frama, text="Show PieChart   ", command=pieChart, font=font)
+b2 =Button(frama, text="Show BarChart   ", command=barChart, font=font)
+b3 = Button(frama, text="Show Histogram  ", command=histo, font=font)
+b4 = Button(frama, text="Show ScatterPlot", command=scatterPlot, font=font)
+b5 =Button(frama, text="Show BoxPlot    ", command=boxPlot, font=font)
+frama.grid(row=0, column =2, rowspan=3)
 
 b1.grid(column=0, row=0)
 b2.grid(column=0, row=1)
@@ -215,5 +245,19 @@ b3.grid(column=0, row=2)
 b4.grid(column=0, row=3)
 b5.grid(column=0, row=4)
 #b6.grid(column=0, row=5)
+
+b6 = Button(window, text="Show Table      ", command=showTable, font = font).grid(column=1, row=3)
+Corr_lbl = Label(window, textvariable=corr, font=font)
+Com_lbl = Label(window, textvariable=comment, font=font)
+Corr_lbl.grid(column=2, row=5)
+Com_lbl.grid(column=2,row=6)
+
+f = Frame(window,bg='gray')
+b7 = Button(f, text="Show 'R'      ", command=Show_R, font=font)
+b8 = Button(f, text="linear Regretion    ", command=linear_reg, font=font)
+f.grid(row=7, column=1)
+
+b7.grid(column=0, row=0)
+b8.grid(column=1, row=0)
 
 window.mainloop()
