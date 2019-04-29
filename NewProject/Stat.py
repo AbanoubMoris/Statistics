@@ -3,19 +3,18 @@ import matplotlib
 from lib2to3.pgen2.tokenize import Double
 from os import truncate
 from tkinter import *
-import tkinter.messagebox
 import statistics
 import InitializeComponent as ic
 from collections import Counter
 import matplotlib.mlab as mlab
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 from tabulate import tabulate
 import csv
 from collections import defaultdict
 import math
-from numpy import *
-from scipy.interpolate import *
+import numpy as np
+from scipy import stats
 
 
 
@@ -33,8 +32,8 @@ def ReadData():
                     pass
     return columns
 
-plot.pie(ReadData()['Sample'])
-plot.show()
+plt.pie(ReadData()['Sample'])
+plt.show()
 
 font = ('tahoma',15)
 window = Tk()
@@ -97,12 +96,12 @@ def Labels():
     return  labels
 
 def pieChart():
-    plot.pie(frequency(), autopct='%1.1f%%', shadow=True, startangle=140, labels=Labels())
-    plot.show()
+    plt.pie(frequency(), autopct='%1.1f%%', shadow=True, startangle=140, labels=Labels())
+    plt.show()
 
 def barChart():
-    plot.bar(Labels(),frequency())
-    plot.show()
+    plt.bar(Labels(),frequency())
+    plt.show()
 
 def histo():
 
@@ -110,13 +109,13 @@ def histo():
     sample = []
     for a in res:
         sample.append(int(a))
-    plot.hist(sample)
-    plot.show()
+    plt.hist(sample)
+    plt.show()
 
 def scatterPlot():
 
-    plot.scatter(Labels(),frequency())
-    plot.show()
+    plt.scatter(Labels(),frequency())
+    plt.show()
 
 
 def boxPlot():
@@ -124,8 +123,8 @@ def boxPlot():
     sample = []
     for a in res:
         sample.append(int(a))
-    plot.boxplot(sample)
-    plot.show()
+    plt.boxplot(sample)
+    plt.show()
 
 def showTable():
     t = PrettyTable()
@@ -223,11 +222,16 @@ def Show_R():
 #1,7,4,6,4,2
 
 def linear_reg():
-    x = X_Values()
-    y = Y_Values()
-    b1 = polyfit(x, y, 1)
-    plot(x, y, 'o')
-    plot(x, polyval(b1, x), 'r-')
+    x = np.array(X_Values())
+    y = np.array(Y_Values())
+    slop, intercept, r_value, p_value, std_err = stats.linregress(x,y)
+    plt.plot(x, y, 'ro', color='red')
+    plt.ylabel('Y')
+    plt.xlabel('X')
+    plt.axis([0, 100, 0, 100])
+    plt.plot(x, x*slop + intercept, 'b')
+    plt.plot()
+    plt.show()
 
 #note: Historgram , Boxplot uses Sample only
 
