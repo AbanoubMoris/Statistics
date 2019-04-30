@@ -188,12 +188,12 @@ corr = StringVar()
 Corr_lbl = Label
 comment = StringVar()
 Com_lbl = Label
-
+linearReg = StringVar()
+LinReg_lbl = Label
 x = []
 y = []
 
 def Show_R():
-
     x = X_Values()
     y = Y_Values()
     N=len(x)
@@ -217,13 +217,11 @@ def Show_R():
     corr_comment(R)
 
 
-#12,8,5,3,2,0
-#1,7,4,6,4,2
-
 def linear_reg():
     x = np.array(X_Values())
     y = np.array(Y_Values())
     slop, intercept, r_value, p_value, std_err = stats.linregress(x,y)
+    linearReg.set(str(slop)+"*X + "+str (intercept))
     plt.plot(x, y, 'ro', color='red')
     plt.ylabel('Y')
     plt.xlabel('X')
@@ -232,7 +230,43 @@ def linear_reg():
     plt.plot()
     plt.show()
 
+
 #note: Historgram , Boxplot uses Sample only
+
+
+def MMM():
+    win = Tk()
+    win.title("Table")
+    win.geometry('500x500')
+    ic.form(win)
+    Label(win, text='Mean   :', font=font).grid(column=0, row=0)
+    Label(win, text='Median :', font=font).grid(column=0, row=1)
+    Label(win, text='Mode   :', font=font).grid(column=0, row=2)
+    Label(win, text=str(statistics.mean(Sample())), font=font).grid(column=1, row=0)
+    Label(win, text=str(statistics.median(Sample())), font=font).grid(column=1, row=1)
+    try:
+        Label(win, text=str(statistics.mode(Sample())), font=font).grid(column=1, row=2)
+    except:
+        Label(win, text="No mode found", font=font).grid(column=1, row=2)
+
+
+def IQR():
+    win = Tk()
+    win.title("Table")
+    win.geometry('500x500')
+    ic.form(win)
+    Label(win, text='Q1   :', font=font).grid(column=0, row=0)
+    Label(win, text='Q2   :', font=font).grid(column=0, row=1)
+    Label(win, text='Q3   :', font=font).grid(column=0, row=2)
+    Label(win, text='IQR  :', font=font).grid(column=0, row=3)
+    q1_x = np.percentile(Sample(), 25, interpolation='midpoint')
+    q3_x = np.percentile(Sample(), 75, interpolation='midpoint')
+    iqr = q3_x - q1_x
+    Label(win, text=str(q1_x), font=font).grid(column=1, row=0)  # Q1
+    Label(win, text=str(statistics.median(Sample())), font=font).grid(column=1, row=1) #Q2
+    Label(win, text=str(q3_x), font=font).grid(column=1, row=2)  # Q3
+    Label(win, text=str(iqr), font=font , fg='red').grid(column=1, row=3)  # IQR
+
 
 frama = Frame(window , bg = 'gray')
 b1 = Button(frama, text="Show PieChart       ", command=pieChart, font=font)
@@ -240,6 +274,8 @@ b2 = Button(frama, text="Show BarChart      ", command=barChart, font=font)
 b3 = Button(frama, text="Show Histogram    ", command=histo, font=font)
 b4 = Button(frama, text="Show ScatterPlot   ", command=scatterPlot, font=font)
 b5 = Button(frama, text="Show BoxPlot        ", command=boxPlot, font=font)
+b6 = Button(frama , text="mean,median,mode", command=MMM, font=font)
+b7 = Button(frama , text="IQR     " ,command = IQR , font = font)
 frama.grid(row=0, column=2, rowspan=3)
 
 b1.grid(column=0, row=0)
@@ -247,18 +283,21 @@ b2.grid(column=0, row=1)
 b3.grid(column=0, row=2)
 b4.grid(column=0, row=3)
 b5.grid(column=0, row=4)
-#b6.grid(column=0, row=5)
+b6.grid(column=0, row=5)
+b7.grid(column=0, row=6)
 
 b6 = Button(window, text="Show Table      ", command=showTable, font=font).grid(column=1, row=3)
 Corr_lbl = Label(window, textvariable=corr, font=font)
 Com_lbl = Label(window, textvariable=comment, font=font)
-Corr_lbl.grid(column=2, row=6)
-Com_lbl.grid(column=2,row=7)
+LinReg_lbl = Label(window, textvariable=linearReg, font=font)
+Corr_lbl.grid(column=2, row=4)
+Com_lbl.grid(column=2, row=5)
+LinReg_lbl.grid(column=2, row=6)
 
 f = Frame(window, bg='gray')
 b7 = Button(f, text="Correlation      ", command=Show_R, font=font)
 b8 = Button(f, text="linear Regression    ", command=linear_reg, font=font)
-f.grid(row=7, column=1)
+f.grid(row=6, column=1)
 
 b7.grid(column=0, row=0)
 b8.grid(column=1, row=0)
