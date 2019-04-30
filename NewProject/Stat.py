@@ -31,10 +31,6 @@ def ReadData():
                 except:
                     pass
     return columns
-
-plt.pie(ReadData()['Sample'])
-plt.show()
-
 font = ('tahoma',15)
 window = Tk()
 window.title("statistics")
@@ -289,10 +285,12 @@ b7.grid(column=0, row=6)
 b6 = Button(window, text="Show Table      ", command=showTable, font=font).grid(column=1, row=3)
 Corr_lbl = Label(window, textvariable=corr, font=font)
 Com_lbl = Label(window, textvariable=comment, font=font)
+Y = Label(window, text="------> Y = ", font=font )
 LinReg_lbl = Label(window, textvariable=linearReg, font=font)
 Corr_lbl.grid(column=2, row=4)
 Com_lbl.grid(column=2, row=5)
-LinReg_lbl.grid(column=2, row=6)
+Y.grid(column=0,row=7)
+LinReg_lbl.grid(column=1, row=7)
 
 f = Frame(window, bg='gray')
 b7 = Button(f, text="Correlation      ", command=Show_R, font=font)
