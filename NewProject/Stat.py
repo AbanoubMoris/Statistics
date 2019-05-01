@@ -17,21 +17,21 @@ import numpy as np
 from scipy import stats
 
 
-
-
 def ReadData():
     columns = defaultdict(list)
 
     with open('12.csv') as f:
         reader = csv.DictReader(f) # read rows into a dictionary format
         for row in reader:
-            for (k,v) in row.items():
+            for (k, v) in row.items():
                 try:
                     columns[k].append(int(v))
                 except:
                     pass
     return columns
-font = ('tahoma',15)
+
+
+font = ('tahoma', 15)
 window = Tk()
 window.title("statistics")
 window.geometry('1000x600')
@@ -67,6 +67,8 @@ def Sample():
     for a in res:
         sample.append(int(a))
     return sample
+
+
 def frequency():
     freq = []
     if str(freqTxt.get()) == '':
@@ -79,6 +81,7 @@ def frequency():
             freq.append(int(a))
     return freq
 
+
 def Labels():
     labels = []
     if str(vartxt.get())=='':
@@ -89,18 +92,20 @@ def Labels():
                 labels.append(str(i))
     else:
         labels = list(str(vartxt.get()).split(','))
-    return  labels
+    return labels
+
 
 def pieChart():
     plt.pie(frequency(), autopct='%1.1f%%', shadow=True, startangle=140, labels=Labels())
     plt.show()
 
+
 def barChart():
-    plt.bar(Labels(),frequency())
+    plt.bar(Labels(), frequency())
     plt.show()
 
-def histo():
 
+def histo():
     res = list(str(sampleTxt.get()).split(','))
     sample = []
     for a in res:
@@ -108,9 +113,9 @@ def histo():
     plt.hist(sample)
     plt.show()
 
-def scatterPlot():
 
-    plt.scatter(Labels(),frequency())
+def scatterPlot():
+    plt.scatter(Labels(), frequency())
     plt.show()
 
 
@@ -121,6 +126,7 @@ def boxPlot():
         sample.append(int(a))
     plt.boxplot(sample)
     plt.show()
+
 
 def showTable():
     t = PrettyTable()
@@ -148,9 +154,9 @@ def showTable():
 def X_Values():
  listX = []
  if str(X_Txt.get()) == '':
-    map = dict(Counter(len(listX)))
-    for val in map.values():
-        listX.append(int(val))
+     res = ReadData()['X']
+     for i in res:
+         listX.append(int(i))
  else:
   res = list(str(X_Txt.get()).split(','))
   for a in res:
@@ -160,9 +166,9 @@ def X_Values():
 def Y_Values():
  listY = []
  if str(Y_Txt.get()) == '':
-    map = dict(Counter(len(listY)))
-    for val in map.values():
-        listY.append(int(val))
+    res = ReadData()['Y']
+    for i in res:
+      listY.append(int(i))
  else:
   res = list(str(Y_Txt.get()).split(','))
   for a in res:
@@ -217,8 +223,8 @@ def Show_R():
 def linear_reg():
     x = np.array(X_Values())
     y = np.array(Y_Values())
-    slop, intercept, r_value, p_value, std_err = stats.linregress(x,y)
-    linearReg.set(str(slop)+"*X + "+str (intercept))
+    slop, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+    linearReg.set(str(slop)+"*X + "+str(intercept))
     plt.plot(x, y, 'ro', color='red')
     plt.ylabel('Y')
     plt.xlabel('X')
@@ -283,11 +289,11 @@ b5.grid(column=0, row=4,pady=1)
 b6.grid(column=0, row=5,pady=1)
 b7.grid(column=0, row=6,pady=1)
 
-b6 = Button(window, text="Show Table      ", command=showTable, font=font , bg='#2c7af7').grid(column=1, row=3)
+b6 = Button(window, text="Show Table      ", command=showTable, font=font, bg='#2c7af7').grid(column=1, row=3)
 Corr_lbl = Label(window, textvariable=corr, font=font)
 Com_lbl = Label(window, textvariable=comment, font=font)
 Y = Label(window, text="------> Y = ", font=font )
-cor=Label(window,text= "------> R = " ,font = font)
+cor = Label(window, text="------> R = ", font=font)
 LinReg_lbl = Label(window, textvariable=linearReg, font=font)
 
 Y.grid(column=0,row=7)
@@ -298,7 +304,7 @@ Com_lbl.grid(column=2, row=8)
 
 f = Frame(window, bg='gray')
 b7 = Button(f, text="Correlation      ", command=Show_R, font=font , bg='#2c7af7')
-b8 = Button(f, text="linear Regression    ", command=linear_reg, font=font , bg='#2c7af7')
+b8 = Button(f, text="linear Regression    ", command=linear_reg, font=font, bg='#2c7af7')
 f.grid(row=6, column=1)
 
 b7.grid(column=0, row=0)

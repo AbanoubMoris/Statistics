@@ -1,6 +1,4 @@
-Variables,Frequancy,Sample
-A,5,1
-B,6,2
-B,2,4
-,,,
-,,,
+Variables,Frequancy,Sample,X,Y
+A,5,1,10,40
+B,6,2,20,50
+B,2,4,30,60
